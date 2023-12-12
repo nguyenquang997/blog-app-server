@@ -14,16 +14,11 @@ const schema = new mongoose.Schema({
         required: true,
         default: 'Anonymous'
     },
-    author: {
-        type: String,
-        required: true,
-        default: 'Anonymous'
-    },
     attachment: String,
     likeCount: {
         type: Number,
         default: 0,
     }
-}, { timstamps: true })
+}, { timestamps: true })
 
 export const PostModels = mongoose.model('Post', schema)

@@ -2,6 +2,13 @@ import { PostModels } from "../models/PostsModels.js"
 
 const getPosts = async (req, res) => {
     try {
+        
+        // const post = new PostModels({
+        //     title: 'This is Title',
+        //     content: 'This is Content',
+        //     likeCount: 2
+        // })
+        // await post.save()
         const posts = await PostModels.find()
         res.status(200).json(posts)
     } catch (error) {

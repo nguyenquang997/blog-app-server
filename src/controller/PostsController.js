@@ -2,7 +2,7 @@ import { PostModels } from "../models/PostsModels.js"
 
 const getPosts = async (req, res) => {
     try {
-        
+
         // const post = new PostModels({
         //     title: 'This is Title',
         //     content: 'This is Content',
@@ -37,5 +37,15 @@ const updatePost = async (req, res) => {
     }
 }
 
+const deletePost = async (req, res) => {
+    try {
+        const deletePost = req.body
+        const post = await PostModels.findOneAndDelete({ _id: deletePost._id })
+        res.status(200).json(post)
+    } catch (error) {
+        res.status(500).json({ err: error })
+    }
+}
 
-export default { getPosts, createPost, updatePost }
+
+export default { getPosts, createPost, updatePost, deletePost }

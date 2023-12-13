@@ -9,7 +9,10 @@ router.get('/', PostsController.getPosts)
 //[POST] "/"
 router.post('/', PostsController.createPost)
 
-//[POST] "/"
+//[PUT] "/"
 router.put('/', PostsController.updatePost)
+
+//[DELETE] "/"
+router.delete('/', PostsController.deletePost)
 
 export default router

@@ -1,14 +1,8 @@
 import { PostModels } from "../models/PostsModels.js"
+import { uploadImage } from "../upload/index.js"
 
 const getPosts = async (req, res) => {
     try {
-
-        // const post = new PostModels({
-        //     title: 'This is Title',
-        //     content: 'This is Content',
-        //     likeCount: 2
-        // })
-        // await post.save()
         const posts = await PostModels.find()
         res.status(200).json(posts)
     } catch (error) {
@@ -19,6 +13,12 @@ const getPosts = async (req, res) => {
 const createPost = async (req, res) => {
     try {
         const newPost = req.body
+        const result = await uploadImage(newPost)
+        // console.log(result.statusUpload)
+        // if (!result.statusUpload) {
+        //     res.status(500).json({ err: result.err })
+        //     return
+        // }
         const post = new PostModels(newPost)
         await post.save()
         res.status(200).json(post)
